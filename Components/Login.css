@@ -1,0 +1,134 @@
+.body {
+  background-color: dimgray;
+  padding-top: 10px;
+  padding-bottom: 117px;
+}
+
+.container {
+  margin-top: 90px;
+}
+
+.SanCen {
+  position: absolute;
+  left: 125px;
+  margin-top: -90px;
+  color: white;
+}
+
+.register {
+  position: absolute;
+  left: 925px;
+  margin-top: -75px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.contact_us {
+  position: absolute;
+  left: 1050px;
+  margin-top: -75px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.help {
+  position: absolute;
+  left: 1200px;
+  margin-top: -75px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.heading {
+  margin: -5px;
+  font-size: 20px;
+}
+
+.top_card {
+  color: white;
+  border: none;
+  height: 130px;
+  margin-top: -30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background: linear-gradient(60deg, #ec407a, #d81b60);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+    0 7px 10px -5px rgba(233, 30, 99, 0.4);
+}
+
+.bottom_card {
+  height: 460px;
+  margin-left: 380px;
+  margin-right: 380px;
+}
+
+.ipFields {
+  margin-top: 30px;
+  width: 100%;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  width: 300px;
+}
+
+.ipFields:focus {
+  outline: none;
+  border-color: purple;
+}
+
+.go_btn {
+  border: none;
+  background-color: white;
+  color: #ec407a;
+  margin: 0px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 16px;
+}
+
+.go_btn:focus {
+  outline: none;
+}
+
+.user_icon {
+  position: relative;
+  left: 120px;
+  bottom: 25px;
+}
+
+.mail_icon {
+  position: relative;
+  left: 120px;
+  bottom: 25px;
+}
+
+.pwd_icon {
+  position: relative;
+  left: 120px;
+  bottom: 25px;
+}
+
+.fb_icon {
+  position: absolute;
+  left: 95px;
+  top: 75px;
+}
+
+.twt_icon {
+  position: absolute;
+  left: 145px;
+  top: 75px;
+}
+
+.gplus_icon {
+  position: absolute;
+  left: 195px;
+  top: 75px;
+}
+
+.forgotPwd {
+  position: relative;
+  /* left: 615px; */
+  bottom: -20px;
+  color: white;
+}
