@@ -1,0 +1,50 @@
+.navBar {
+  background-color: #a7a1d6;
+  position: static;
+  padding-bottom: 248px;
+  /* height: 700px; */
+  /* height: inherit; */
+  /* width: 280px; */
+}
+
+.logo {
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-bottom: 30px;
+}
+
+.tabs {
+  padding-bottom: 0px;
+  padding-top: 30px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-right: 20px;
+  font-size: 25px;
+  text-align: center;
+  line-height: 45px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.tabs :focus {
+  outline: none;
+}
+
+.feed_tab {
+  color: white;
+}
+
+.nav-pills .nav-links.active {
+  background-color: #797e83;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.nav-pills :hover {
+  color: black;
+  text-decoration: none;
+}
+
+.videos_tab {
+  color: #ffffff;
+  padding-top: 10px;
+}
