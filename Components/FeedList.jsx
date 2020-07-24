@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import "./FeedList.css";
 import pic from "./dawn.jpg";
 import { Row, Col, Container, Image } from "react-bootstrap";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import FeedDetail from "./FeedDetail";
 
 class FeedList extends Component {
@@ -53,7 +53,6 @@ class FeedList extends Component {
     return (
       <Fragment>
         <Container fluid>
-         <Router>
           <Row>
             <Col sm={8} className="col-1">
               <div>Today</div>
@@ -64,34 +63,18 @@ class FeedList extends Component {
                       <div>
                         <Image alt="thumbnail" src={pic} className="img" />
                       </div>
-                      <div className="content">
-                         <Link to="/feedDetail" className="title">
-                            <h5>{e.title}</h5>
-                          </Link>
-                        <p>{e.desc}</p>
-                      </div>
+                         <Link to="/feedDetail/${e.id}/${e.title}/${e.desc}" className="title">
+                            <div className="content">
+                          <h5>{e.title}</h5>
+                          <p>{e.desc}</p>
+                        </div>
+                        </Link>
                     </a>
                   </ul>
                 );
               })}
-              <Switch>
-                  <Route path="/feedDetail">
-                    <FeedDetail />
-                  </Route>
-                </Switch>
             </Col>
-            {/* <Col sm={3} className="col-2">
-              <div>Leave Blank Space</div>
-              <div>Leave Blank Space</div>
-              <div>Leave Blank Space</div>
-              <div>Leave Blank Space</div>
-            </Col> */}
-            {/* <Col sm={4}>
-              <div>FeedList</div>
-              <div>FeedList</div>
-            </Col> */}
           </Row>
-         </Router>
         </Container>
       </Fragment>
     );
