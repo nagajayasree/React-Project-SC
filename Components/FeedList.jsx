@@ -12,39 +12,39 @@ class FeedList extends Component {
       posts: [
         {
           id: 1,
-          title: "Title of the Article",
-          desc: "Some description of the article",
-          dt: new Date().getDay,
+          title: "Title of the Item1 Title of the Item1 Title of the Item1",
+          desc:
+            "Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item",
         },
         {
           id: 2,
-          title: "Title of the Article",
-          desc: "Some description of the article",
-          dt: new Date().getDay,
+          title: "Title of the Item2",
+          desc:
+            "Some description of the Item Some description of the Item Some description of the Item Some description of the Item",
         },
         {
           id: 3,
-          title: "Title of the Article",
-          desc: "Some description of the article",
-          dt: new Date().getDay,
+          title: "Title of the Item3",
+          desc:
+            "Some description of the Item Some description of the Item Some description of the Item Some description of the Item",
         },
         {
           id: 4,
-          title: "Title of the Article",
-          desc: "Some description of the article",
-          dt: new Date().getDay,
+          title: "Title of the Item4",
+          desc:
+            "Some description of the Item Some description of the Item Some description of the Item Some description of the Item",
         },
         {
           id: 5,
-          title: "Title of the Article",
-          desc: "Some description of the article",
-          dt: new Date().getDay,
+          title: "Title of the Item5",
+          desc:
+            "Some description of the Item Some description of the Item Some description of the Item Some description of the Item",
         },
         {
           id: 6,
-          title: "Title of the Article",
-          desc: "Some description of the article",
-          dt: new Date().getDay,
+          title: "Title of the Item6",
+          desc:
+            "Some description of the Item Some description of the Item Some description of the Item Some description of the Item",
         },
       ],
     };
@@ -65,8 +65,8 @@ class FeedList extends Component {
                       </div>
                          <Link to="/feedDetail/${e.id}/${e.title}/${e.desc}" className="title">
                             <div className="content">
-                          <h5>{e.title}</h5>
-                          <p>{e.desc}</p>
+                               <h5 className="heading1">{e.title}</h5>
+                               <p className="heading2">{e.desc}</p>
                         </div>
                         </Link>
                     </a>
