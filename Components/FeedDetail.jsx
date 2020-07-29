@@ -2,6 +2,8 @@ import React, { Component, Fragment } from "react";
 import { Container,Row,Col } from "react-bootstrap";
 import "./FeedDetail.css";
 
+const VideoList = lazy(() => import("./VideoList"));
+
 const FeedDetail = ({ match, history }) => {
   // console.log(match.params);
   return (
@@ -17,10 +19,15 @@ const FeedDetail = ({ match, history }) => {
             <p className="feed_desc">{match.params.desc}</p>
           </Col>
           <Col sm={3} className="vi_list">
-            <p>
+              <!--<p>
               list of videos list of videos list of videos list of videos list
               of videos list of videos
-            </p>
+            </p> -->
+            <div>
+              <Suspense fallback={<div>Loading....</div>}>
+                <VideoList />
+              </Suspense>
+            </div>
           </Col>
         </Row>
       </Container>
