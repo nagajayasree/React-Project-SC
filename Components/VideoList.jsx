@@ -62,7 +62,9 @@ class VideoList extends Component {
                           />
                           <Card.Body className="video_body">
                             <div className="video_content">
-                              <Link>
+                              <Link
+                                to={`/videoDetail/${e.id}/${e.title}/${e.desc}/${e.link}`}
+                                >
                                 <Card.Title className="video_title">
                                   <h5>{e.title}</h5>
                                 </Card.Title>
