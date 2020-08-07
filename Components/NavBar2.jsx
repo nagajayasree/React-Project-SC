@@ -36,6 +36,10 @@ class NavBar2 extends Component {
                   path="/feedDetail/:id/:title/:desc"
                   component={FeedDetail}
                 />
+                <Route
+                  path="/videoDetail/:id/:title/:desc/:link"
+                  component={VideoDetail}
+                />
                 <Route path="/feedlist" component={FeedList} />
                 <Route path="/videolist" component={VideoList} />
                 ///displays this page automatically when page is loaded
