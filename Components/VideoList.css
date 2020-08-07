@@ -1,0 +1,22 @@
+.video_col_1 {
+  margin-top: 125px;
+}
+
+.video_card {
+  width: 14rem;
+  margin-bottom: 30px;
+  margin-right: 25px;
+  margin-left: -38px;
+}
+
+.video_body {
+  cursor: pointer;
+}
+
+.video_title {
+  color: black;
+}
+
+.video_title :hover {
+  text-decoration: none;
+}
