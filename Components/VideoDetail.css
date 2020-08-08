@@ -8,9 +8,19 @@
 }
 
 .videoDetail_title {
-  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 25px;
 }
 
 .videoDetail_desc {
-  font-size: 20px;
+  text-indent: 30px;
+  font-size: 16px;
+  display: block;
+  text-align: justify;
+}
+
+.videoDetail_feedList {
+  margin-left: -20px;
+  width: 145%;
 }
