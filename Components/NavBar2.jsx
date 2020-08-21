@@ -18,14 +18,28 @@ class NavBar2 extends Component {
       <Fragment>
         <Container fluid>
           <Row>
-            <Col sm={3} className="navBar">
+            <Col sm={3} className="navBar">             
+              <Link to="/feed">
               <Image src={Logo} alt="Logo" className="logo" roundedCircle />
+              </Link>
               <Nav variant="pills" className="flex-column tabs ">
-                <Link to="/feedlist" className="feed_tab nav-pills nav-links">
+                <Link to="/feed" className="feed_tab nav-pills nav-links">
                   Feed
                 </Link>
-                <Link to="/videolist" className="videos_tab  nav-links">
+                <Link to="/videos" className="videos_tab  nav-links">
                   Videos
+                </Link>
+                <Link
+                  to="/audios"
+                  className="audios_tab nav-pills nav-links active"
+                >
+                  Audios
+                </Link>
+                <Link
+                  to="/addBlog"
+                  className="addBlog_tab nav-pills nav-links active"
+                >
+                  Add Your Blog
                 </Link>
               </Nav>
             </Col>
@@ -40,8 +54,10 @@ class NavBar2 extends Component {
                   path="/videoDetail/:id/:title/:desc/:link"
                   component={VideoDetail}
                 />
-                <Route path="/feedlist" component={FeedList} />
-                <Route path="/videolist" component={VideoList} />
+                <Route path="/feed" component={FeedList} />
+                <Route path="/videos" component={VideoList} />
+                <Route path="/audios" component={Audios} />
+                <Route path="/addBlog" component={AddBlog} />
                 ///displays this page automatically when page is loaded
                 <Redirect from="/" exact to="/feedlist"></Redirect>
                 <Route path="/feedDetail" component={FeedDetail} />
