@@ -11,9 +11,18 @@ import "./NavBar2.css";
 class NavBar2 extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+          tabSelected: "",
+};
   }
+  
+    activateTab = () => {
+    this.setState({ tabSelected: true });
+    console.log("tab clicked");
+  };
+  
   render() {
+        const { tabSelected } = this.state;
     return (
       <Fragment>
         <Container fluid>
@@ -23,21 +32,43 @@ class NavBar2 extends Component {
               <Image src={Logo} alt="Logo" className="logo" roundedCircle />
               </Link>
               <Nav variant="pills" className="flex-column tabs ">
-                <Link to="/feed" className="feed_tab nav-pills nav-links">
+                   <Link
+                  to="/feed"
+                  className={
+                    tabSelected === true
+                      ? "tabs nav-link active"
+                      : "tabs nav-link"
+                  }
+                >
                   Feed
                 </Link>
-                <Link to="/videos" className="videos_tab  nav-links">
+                <Link
+                  to="/videos"
+                  className={
+                    tabSelected === true
+                      ? "tabs nav-link active"
+                      : "tabs nav-link"
+                  }
+                >
                   Videos
                 </Link>
                 <Link
                   to="/audios"
-                  className="audios_tab nav-pills nav-links active"
+                  className={
+                    tabSelected === true
+                      ? "tabs nav-link active"
+                      : "tabs nav-link"
+                  }
                 >
                   Audios
                 </Link>
                 <Link
                   to="/addBlog"
-                  className="addBlog_tab nav-pills nav-links active"
+                  className={
+                    tabSelected === true
+                      ? "tabs nav-link active"
+                      : "tabs nav-link"
+                  }
                 >
                   Add Your Blog
                 </Link>
