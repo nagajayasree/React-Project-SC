@@ -9,70 +9,52 @@ class FeedList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: [
-        {
-          id: 1,
-          title: "Title of the Item1 Title of the Item1 Title of the Item1",
-          desc:
-            "Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item Some description of the Item",
-        },
-        {
-          id: 2,
-          title: "Title of the Item2",
-          desc:
-            "Some description of the Item Some description of the Item Some description of the Item Some description of the Item",
-        },
-        {
-          id: 3,
-          title: "Title of the Item3",
-          desc:
-            "Some description of the Item Some description of the Item Some description of the Item Some description of the Item",
-        },
-        {
-          id: 4,
-          title: "Title of the Item4",
-          desc:
-            "Some description of the Item Some description of the Item Some description of the Item Some description of the Item",
-        },
-        {
-          id: 5,
-          title: "Title of the Item5",
-          desc:
-            "Some description of the Item Some description of the Item Some description of the Item Some description of the Item",
-        },
-        {
-          id: 6,
-          title: "Title of the Item6",
-          desc:
-            "Some description of the Item Some description of the Item Some description of the Item Some description of the Item",
-        },
-      ],
+        feedPosts: [],
+      currentPage: 1,
+      pageSize: 4,
     };
   }
+  
+  componentDidMount() {
+    this.setState({ feedPosts: getfeedPosts() });
+  }
+
+  handlePageChange = (page) => {
+    this.setState({ currentPage: page });
+  };
+
   render() {
+    const { feedPosts, currentPage, pageSize } = this.state;
+
+    const FeedPosts = paginate(feedPosts, currentPage, pageSize);
     return (
       <Fragment>
         <Container fluid>
           <Row>
-            <Col sm={8} className="col-1">
-              <div>Today</div>
-              {this.state.posts.map((e) => {
+            <Col sm={9} className="col-1">
+              {FeedPosts.map((e) => {
                 return (
                   <ul key={e.id} className="feed-item">
                     <a>
                       <div>
                         <Image alt="thumbnail" src={pic} className="img" />
                       </div>
-                         <Link to="/feedDetail/${e.id}/${e.title}/${e.desc}" className="title">
+                         <Link to="/feedDetail/${e.id}/${e.title}/${e.description}" className="title">
                             <div className="content">
                                <h5 className="heading1">{e.title}</h5>
-                               <p className="heading2">{e.desc}</p>
+                               <p className="heading2">{e.description}</p>
                         </div>
                         </Link>
                     </a>
                   </ul>
                 );
               })}
+              <AddPagination
+                postsCount={feedPosts.length}
+                pageSize={pageSize}
+                currentPage={currentPage}
+                onPageChange={this.handlePageChange}
+              />
             </Col>
           </Row>
         </Container>
