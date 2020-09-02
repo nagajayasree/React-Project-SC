@@ -3,7 +3,10 @@ import "./FeedList.css";
 import pic from "./dawn.jpg";
 import { Row, Col, Container, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import FeedDetail from "./FeedDetail";
+import AddPagination from "../OtherComponents/AddPagination";
+import { getfeedPosts } from "../DataServices/fakeFeedPostService";
+import { paginate } from "../OtherComponents/paginate";
+
 
 class FeedList extends Component {
   constructor(props) {
