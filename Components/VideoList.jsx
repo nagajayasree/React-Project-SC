@@ -3,53 +3,30 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import img from "./dawn.jpg";
 import "./VideoList.css";
+import { getvideoPosts } from "../DataServices/fakeVideoPostService";
 
 class VideoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      videos: [
-        {
-          id: 1,
-          title: "Video Title 1",
-          desc: "Some Description of the Video",
-        },
-        {
-          id: 2,
-          title: "Video Title 2",
-          desc: "Some Description of the Video",
-        },
-        {
-          id: 3,
-          title: "Video Title 3",
-          desc: "Some Description of the Video",
-        },
-        {
-          id: 4,
-          title: "Video Title 4",
-          desc: "Some Description of the Video",
-        },
-        {
-          id: 5,
-          title: "Video Title 5",
-          desc: "Some Description of the Video",
-        },
-        {
-          id: 6,
-          title: "Video Title 6",
-          desc: "Some Description of the Video",
-        },
-      ],
+      videoPosts=[];
     };
   }
+  
+    componentDidMount() {
+    this.setState({ videoPosts: getvideoPosts() });
+  }
+  
   render() {
+        const { videoPosts } = this.state;
+
     return (
       <Fragment>
         <div>VideoList</div>
         <Container fluid>
           <Row>
-            <Col sm={9} className="video_col_1">
-              {this.state.videos.map((e) => {
+            <Col sm={10} className="video_col_1">
+              {videoPosts.map((e) => {
                 return (
                   <ul key={e.id} className="video_item">
                     <a>
@@ -63,14 +40,14 @@ class VideoList extends Component {
                           <Card.Body className="video_body">
                             <div className="video_content">
                               <Link
-                                to={`/videoDetail/${e.id}/${e.title}/${e.desc}/${e.link}`}
+                                to={`/videoDetail/${e.id}/${e.title}/${e.description}/${e.link}`}
                                 >
                                 <Card.Title className="video_title">
                                   <h5>{e.title}</h5>
                                 </Card.Title>
                               </Link>
                               <Card.Text className="video_desc">
-                                <p>{e.desc}</p>
+                                <p>{e.description}</p>
                               </Card.Text>
                             </div>
                           </Card.Body>
