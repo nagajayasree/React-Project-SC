@@ -4,6 +4,7 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import img from "./dawn.jpg";
 import "./VideoList.css";
 import { getvideoPosts } from "../DataServices/fakeVideoPostService";
+import _ from "lodash";
 
 class VideoList extends Component {
   constructor(props) {
