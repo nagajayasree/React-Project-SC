@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import AddPagination from "../OtherComponents/AddPagination";
 import { getfeedPosts } from "../DataServices/fakeFeedPostService";
 import { paginate } from "../OtherComponents/paginate";
-
+import _ from "lodash";
 
 class FeedList extends Component {
   constructor(props) {
@@ -27,11 +27,6 @@ class FeedList extends Component {
   handlePageChange = (page) => {
     this.setState({ currentPage: page });
   };
-
- handleSort = (path) => {
-    this.setState({ sortPosts: { path, order: "desc" } });
-  };
-
 
   render() {
     const { feedPosts, currentPage, pageSize } = this.state;
