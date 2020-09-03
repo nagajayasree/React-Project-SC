@@ -9,24 +9,32 @@ class VideoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      videoPosts=[];
+      videoPosts=[],
+       currentPage: 1,
+      pageSize: 3,
     };
   }
   
-    componentDidMount() {
+  componentDidMount() {
     this.setState({ videoPosts: getvideoPosts() });
   }
   
+   handlePageChange = (page) => {
+    this.setState({ currentPage: page });
+  };
+  
   render() {
-        const { videoPosts } = this.state;
+        const { videoPosts,currentPage,pageSize } = this.state;
+        const VideoPosts = paginate(videoPosts, currentPage, pageSize);
+
 
     return (
       <Fragment>
         <div>VideoList</div>
         <Container fluid>
-          <Row>
             <Col sm={10} className="video_col_1">
-              {videoPosts.map((e) => {
+              <Row className="video_row">
+              {VideoPosts.map((e) => {
                 return (
                   <ul key={e.id} className="video_item">
                     <a>
@@ -57,8 +65,14 @@ class VideoList extends Component {
                   </ul>
                 );
               })}
-            </Col>
-          </Row>
+             </Row>
+              <AddPagination
+              postsCount={videoPosts.length}
+              pageSize={pageSize}
+              currentPage={currentPage}
+              onPageChange={this.handlePageChange}
+            />
+          </Col>
         </Container>
       </Fragment>
     );
