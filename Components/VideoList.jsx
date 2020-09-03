@@ -12,6 +12,7 @@ class VideoList extends Component {
       videoPosts=[],
        currentPage: 1,
       pageSize: 3,
+      sortPosts: { path: "title", order: "desc" },
     };
   }
   
@@ -22,10 +23,15 @@ class VideoList extends Component {
    handlePageChange = (page) => {
     this.setState({ currentPage: page });
   };
+
+   handleSort = (path) => {
+    this.setState({ sortPosts: { path, order: "desc" } });
+  };
   
   render() {
         const { videoPosts,currentPage,pageSize } = this.state;
-        const VideoPosts = paginate(videoPosts, currentPage, pageSize);
+        const sorted = _.orderBy(videoPosts, [sortPosts.path], [sortPosts.order]);
+        const VideoPosts = paginate(sorted, currentPage, pageSize);
 
 
     return (
