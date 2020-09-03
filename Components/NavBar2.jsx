@@ -16,9 +16,8 @@ class NavBar2 extends Component {
 };
   }
   
-    activateTab = () => {
-    this.setState({ tabSelected: true });
-    console.log("tab clicked");
+    activateTab = (path) => {
+    this.setState({ tabSelected: path });
   };
   
   render() {
@@ -35,40 +34,44 @@ class NavBar2 extends Component {
                    <Link
                   to="/feed"
                   className={
-                    tabSelected === true
+                    tabSelected === "Feed
                       ? "tabs nav-link active"
                       : "tabs nav-link"
                   }
+                onClick={() => this.activateTab("Feed")}
                 >
                   Feed
                 </Link>
                 <Link
                   to="/videos"
                   className={
-                    tabSelected === true
+                    tabSelected === "Videos"
                       ? "tabs nav-link active"
                       : "tabs nav-link"
                   }
-                >
+                onClick={() => this.activateTab("Audios")}
+                 >
                   Videos
                 </Link>
                 <Link
                   to="/audios"
                   className={
-                    tabSelected === true
+                    tabSelected === "Audios"
                       ? "tabs nav-link active"
                       : "tabs nav-link"
                   }
+                onClick={() => this.activateTab("Audios")}
                 >
                   Audios
                 </Link>
                 <Link
                   to="/addBlog"
                   className={
-                    tabSelected === true
+                    tabSelected === "AddBlog"
                       ? "tabs nav-link active"
                       : "tabs nav-link"
                   }
+                onClick={() => this.activateTab("AddBlog")}
                 >
                   Add Your Blog
                 </Link>
