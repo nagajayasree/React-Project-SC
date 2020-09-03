@@ -23,10 +23,6 @@ class VideoList extends Component {
    handlePageChange = (page) => {
     this.setState({ currentPage: page });
   };
-
-   handleSort = (path) => {
-    this.setState({ sortPosts: { path, order: "desc" } });
-  };
   
   render() {
         const { videoPosts,currentPage,pageSize } = this.state;
