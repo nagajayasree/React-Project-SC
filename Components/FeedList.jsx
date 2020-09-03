@@ -15,6 +15,8 @@ class FeedList extends Component {
         feedPosts: [],
       currentPage: 1,
       pageSize: 4,
+      sortPosts: { path: "title", order: "desc" },
+
     };
   }
   
@@ -26,10 +28,15 @@ class FeedList extends Component {
     this.setState({ currentPage: page });
   };
 
+ handleSort = (path) => {
+    this.setState({ sortPosts: { path, order: "desc" } });
+  };
+
+
   render() {
     const { feedPosts, currentPage, pageSize } = this.state;
-
-    const FeedPosts = paginate(feedPosts, currentPage, pageSize);
+    const sorted = _.orderBy(feedPosts, [sortPosts.path], [sortPosts.order]);
+    const FeedPosts = paginate(sorted, currentPage, pageSize);
     return (
       <Fragment>
         <Container fluid>
