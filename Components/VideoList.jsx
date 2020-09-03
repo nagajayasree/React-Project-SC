@@ -37,31 +37,30 @@ class VideoList extends Component {
               {VideoPosts.map((e) => {
                 return (
                   <ul key={e.id} className="video_item">
-                    <a>
-                      <div>
-                        <Card className="video_card">
-                          <Card.Img
-                            className="video_img"
-                            src={img}
-                            alt="image"
-                          />
-                          <Card.Body className="video_body">
-                            <div className="video_content">
-                              <Link
-                                to={`/videoDetail/${e.id}/${e.title}/${e.description}/${e.link}`}
-                                >
-                                <Card.Title className="video_title">
-                                  <h5>{e.title}</h5>
-                                </Card.Title>
-                              </Link>
-                              <Card.Text className="video_desc">
-                                <p>{e.description}</p>
-                              </Card.Text>
-                            </div>
-                          </Card.Body>
-                        </Card>
-                      </div>
-                    </a>
+                     <Card className="video_card">
+                      <iframe
+                        className="video_link"
+                        src={e.link}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; 
+                      picture-in-picture"
+                        allowFullScreen
+                      ></iframe>
+                      <Card.Body className="video_body">
+                        <span className="video_content">
+                          <Link
+                            to={`/videoDetail/${e.id}/${e.title}/${e.description}/${e.link}`}
+                          >
+                            <Card.Title className="video_title">
+                              <h5>{e.title}</h5>
+                            </Card.Title>
+                            <Card.Text className="video_desc">
+                              <span>{e.description}</span>
+                            </Card.Text>
+                          </Link>
+                        </span>
+                      </Card.Body>
+                    </Card> 
                   </ul>
                 );
               })}
