@@ -40,6 +40,6 @@
   border-radius: 20px;
 }
 
-.video_search {
+.video_search:focus {
   outline: none;
 }
