@@ -1,46 +1,79 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import img from "./dawn.jpg";
 import "./VideoList.css";
 import { getvideoPosts } from "../DataServices/fakeVideoPostService";
+import AddPagination from "../OtherComponents/AddPagination";
+import { paginate } from "../OtherComponents/paginate";
+import SearchBar from "../OtherComponents/SearchBar";
 import _ from "lodash";
 
 class VideoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      videoPosts=[],
-       currentPage: 1,
+      videoPosts: [],
+      currentPage: 1,
       pageSize: 3,
       sortPosts: { path: "title", order: "desc" },
+      searchQuery: "",
     };
   }
-  
+
   componentDidMount() {
     this.setState({ videoPosts: getvideoPosts() });
   }
-  
-   handlePageChange = (page) => {
+
+  handlePageChange = (page) => {
     this.setState({ currentPage: page });
   };
-  
-  render() {
-        const { videoPosts,currentPage,pageSize } = this.state;
-        const sorted = _.orderBy(videoPosts, [sortPosts.path], [sortPosts.order]);
-        const VideoPosts = paginate(sorted, currentPage, pageSize);
 
+  handleSearch = (query) => {
+    this.setState({ searchQuery: query, currentPage: 1 });
+  };
+
+  // handleSort = (path) => {
+  //   this.setState({ sortPosts: { path, order: "desc" } });
+  // };
+
+  render() {
+    const {
+      videoPosts,
+      currentPage,
+      sortPosts,
+      pageSize,
+      searchQuery,
+      videoPosts: allPosts,
+    } = this.state;
+
+    let filtered = allPosts;
+    if (searchQuery)
+      filtered = allPosts.filter((p) =>
+        p.title.toLowerCase().startsWith(searchQuery.toLowerCase())
+      );
+
+    const sorted = _.orderBy(filtered, [sortPosts.path], [sortPosts.order]);
+
+    const VideoPosts = paginate(sorted, currentPage, pageSize);
 
     return (
       <Fragment>
-        <div>VideoList</div>
         <Container fluid>
-            <Col sm={10} className="video_col_1">
-              <Row className="video_row">
+          <Col sm={10} className="video_col_1">
+            <Col sm={9}>
+              <SearchBar
+                value={searchQuery}
+                onChange={this.handleSearch}
+                classes="form-comtrol my-3 video_search"
+              />
+            </Col>
+            <p>Videos</p>
+            <Row className="video_row">
               {VideoPosts.map((e) => {
                 return (
                   <ul key={e.id} className="video_item">
-                     <Card className="video_card">
+                    <Card className="video_card">
+                      {/* <Card.Img className="video_img" src={img} alt="image" /> */}
                       <iframe
                         className="video_link"
                         src={e.link}
@@ -63,12 +96,12 @@ class VideoList extends Component {
                           </Link>
                         </span>
                       </Card.Body>
-                    </Card> 
+                    </Card>
                   </ul>
                 );
               })}
-             </Row>
-              <AddPagination
+            </Row>
+            <AddPagination
               postsCount={videoPosts.length}
               pageSize={pageSize}
               currentPage={currentPage}
