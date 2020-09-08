@@ -1,11 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import Form from "../OtherComponents/Form";
+import Joi from "joi-browser";
 import "./AddBlog.css";
-import Input, { Textarea } from "../OtherComponents/Input";
 
-class AddBlog extends Component {
+class AddBlog extends Form {
   state = {
-    info: {
+    data: {
       blogName: "",
       mailId: "",
       url: "",
@@ -14,41 +15,19 @@ class AddBlog extends Component {
     errors: {},
   };
 
-  validate = () => {
-    const errors = {};
-    const { info } = this.state;
-    if (info.blogName.trim() === "") {
-      errors.blogName = "Name is Required.";
-    }
-    if (info.mailId.trim() === "") {
-      errors.mailId = "Email-id is Required.";
-    }
-    if (info.url.trim() === "") {
-      errors.url = "URL is Required.";
-    }
-    if (info.feed.trim() === "") {
-      errors.feed = "Feed is Required.";
-    }
-    return Object.keys(errors).length === 0 ? null : errors;
+  schema = {
+    blogName: Joi.string().required().label("Blog Name"),
+    mailId: Joi.string().required().email().label("Email-Id"),
+    url: Joi.string().required().url().label("URL"),
+    feed: Joi.string().required().label("Feed"),
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const errors = this.validate();
-    // console.log(errors);
-    this.setState({ errors: errors || {} });
-    if (errors) return;
-    // console.log("submitted");
-  };
-
-  handleChange = ({ currentTarget: input }) => {
-    const info = { ...this.state.info };
-    info[input.name] = input.value;
-    this.setState({ info });
+  doSubmit = () => {
+    //Call the Server
+    console.log("Submitted");
   };
 
   render() {
-    const { info, errors } = this.state;
 
     return (
       <>
@@ -58,52 +37,21 @@ class AddBlog extends Component {
             <Row>
               <Col sm={9} className="addBlog">
                 <Row sm={4} className="inputField">
-                  <Input
-                    name="blogName"
-                    value={info.blogName}
-                    label="Name"
-                    onChange={this.handleChange}
-                    type="text"
-                    error={errors.blogName}
-                  />
+                  {this.renderInput("blogName", "Blog Name")}
                 </Row>
                 <Row sm={4} className="inputField">
-                  <Input
-                    name="mailId"
-                    value={info.mailId}
-                    label="Email-Id"
-                    onChange={this.handleChange}
-                    type="email"
-                    error={errors.mailId}
-                  />
+                  {this.renderInput("url", "URL")}
                 </Row>
                 <Row sm={4} className="inputField">
-                  <Input
-                    name="url"
-                    value={info.url}
-                    label="URL"
-                    onChange={this.handleChange}
-                    type="url"
-                    error={errors.url}
-                  />
+                  {this.renderInput("mailId", "Email-Id")}
                 </Row>
                 <Row sm={4} className="inputField">
-                  <Col sm={12}>
-                    <Textarea
-                      name="feed"
-                      value={info.feed}
-                      onChange={this.handleChange}
-                      type="text"
-                      error={errors.feed}
-                    />
-                  </Col>
+                  {this.renderTextarea("feed", "Feed", 6, 250)}
                 </Row>
               </Col>
             </Row>
             <Row>
-              <Col sm={4}>
-                <button className="btn btn-primary addBlg_Subtn">Submit</button>
-              </Col>
+              <Col sm={4}>{this.renderButton("Save")}</Col>
             </Row>
           </form>
         </Container>
