@@ -37,4 +37,9 @@
 
 .video_search {
   margin-left: 515px;
+  border-radius: 20px;
+}
+
+.video_search {
+  outline: none;
 }
