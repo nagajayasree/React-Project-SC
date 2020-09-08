@@ -55,6 +55,11 @@
   transform: translateY(1.52px);
 }
 
-.feed_search{
+.feed_search {
   margin-left: 510px;
+  border-radius: 20px;
+}
+
+.feed_search:focus {
+  outline: none;
 }
