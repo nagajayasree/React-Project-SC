@@ -15,8 +15,22 @@
 
 .video_title {
   color: black;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  transform: translateY(1.52px);
 }
 
-.video_title :hover {
+.video_desc {
+  letter-spacing: 1px;
+  text-align: justify;
+  color: black;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  transform: translateY(1.52px);
+}
+
+.video_content :hover {
   text-decoration: none;
 }
