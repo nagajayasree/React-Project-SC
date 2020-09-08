@@ -34,3 +34,7 @@
 .video_content :hover {
   text-decoration: none;
 }
+
+.video_search {
+  margin-left: 515px;
+}
