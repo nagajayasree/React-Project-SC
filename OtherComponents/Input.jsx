@@ -1,22 +1,20 @@
 import React from "react";
 import { Col } from "react-bootstrap";
 
-export const Textarea = ({ name, onChange, value, error, type }) => {
+export const Textarea = ({ name, error, label, ...rest }) => {
   return (
     <>
-      <label htmlFor="feed">Feed</label>
+      <Col sm={12}>
+      <label htmlFor={name}>{label}</label>
       <textarea
-        value={value}
-        type={type}
-        onChange={onChange}
+        {...rest}
         className="form-control"
         id="feed"
         name={name}
-        rows="6"
-        cols="250"
         maxLength="100"
       />
       {error && <div className="alert alert-danger">{error}</div>}
+      </Col>
     </>
   );
 };
